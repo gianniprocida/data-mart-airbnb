@@ -1,6 +1,6 @@
 # A Use-Case of booking a hotel room:Airbnb
 
-Read the file `Assignments Portfolio_DLBDSPBDM01-2.pdf` for more info.
+Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info.
 
 
 ## Database creation using docker
