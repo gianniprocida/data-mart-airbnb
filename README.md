@@ -13,7 +13,6 @@ docker run -d \
   -e MYSQL_ROOT_PASSWORD=secret \
   -e MYSQL_DATABASE=todos \
   mysql:8.0
-
 ```
 * docker run: Initiates the creation and execution of a new Docker container.
 * -d: Runs the container in detached mode, meaning it runs in the background.
@@ -50,11 +49,10 @@ have been created and constraints have been added:
 
 ```
 mysql -u root -p
-(insert password)
 ```
 
 ```
-use data_mart_airbnb
+use data_mart_airbnb;
 ```
 
 ```
@@ -62,8 +60,7 @@ show tables;
 show create table `<yourtable>`;
 ```
 
-Look for something like Constraint `constraint-name` FOREIGN KEY to check whether the foreign key 
-was added.  
+`show tables` will list all the tables present in the `data_mart_aibnb` whereas `show create table <yourtable>` will show all the information about the columns, their data types, constraints (e.g., PRIMARY KEY).
 
 After that, execute the script `run_all_scripts.sh` that will do the following things:
 1. Install necessary Python packages (pandas, SQLAlchemy, etc.).
