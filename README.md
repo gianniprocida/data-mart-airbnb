@@ -63,7 +63,7 @@ show tables;
 show create table `<yourtable>`;
 ```
 
-`show tables` will list all the tables present in the `data_mart_aibnb` whereas `show create table <yourtable>` will show all the information about the columns, their data types, constraints (e.g., PRIMARY KEY).
+`show tables` will list all the tables present in the `data_mart_aibnb`, while `show create table <yourtable>` will show all the information about the columns, their data types, constraints (e.g., PRIMARY KEY).
 
 After that, execute the script `run_all_scripts.sh` that will do the following things:
 1. Install necessary Python packages (pandas, SQLAlchemy, etc.).
