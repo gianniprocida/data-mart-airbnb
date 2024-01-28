@@ -66,9 +66,9 @@ Look for something like Constraint `constraint-name` FOREIGN KEY to check whethe
 was added.  
 
 After that, execute the script `run_all_scripts.sh` that will do the following things:
-1)Install necessary Python packages (pandas, SQLAlchemy, etc.).
-2) Create the CSV files for each table
-3) Fill tables using data in the csv files:
+1. Install necessary Python packages (pandas, SQLAlchemy, etc.).
+2. Create the CSV files for each table
+3. Fill tables using data in the csv files:
 
 Finally, create a MySQL dump of the database: 
 
