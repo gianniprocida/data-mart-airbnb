@@ -82,6 +82,8 @@ link between this directory and the directory within the container.
 
 
 # Conception phase 
+The definition of tables, their structures, and the constraints adhered to a well-thought-out process. If you are curious, feel free to explore the details below. 
+
 
 ![diagram](entity-relationship-diagram.png)
 
