@@ -1,4 +1,7 @@
-# DATAMART
+# A Use-Caseofbookingahotelroom:Airbnb
+
+Read the file `Assignments Portfolio_DLBDSPBDM01-2.pdf` for more info.
+
 
 ## Database creation using docker
 
@@ -78,8 +81,13 @@ link between this directory and the directory within the container.
 
 
 
+# Conception phase 
 
+![diagram](entity-relationship-diagram.png)
 
+This detailed Entity-Relationship Diagram (ERD) model provides a segment of our database model designed for the Airbnb use case. The squares represent our entities, each popualted with attributes relevant to the respective entities. The arrows between the squares indicate how the entities relate to one another.
+
+![diagram](relationships.png)
 
 
 -d: Runs the container in detached mode, meaning it runs in the background and does not block the terminal.
