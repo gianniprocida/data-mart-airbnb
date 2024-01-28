@@ -1,4 +1,4 @@
-# A Use-Caseofbookingahotelroom:Airbnb
+# A Use-Case of booking a hotel room:Airbnb
 
 Read the file `Assignments Portfolio_DLBDSPBDM01-2.pdf` for more info.
 
