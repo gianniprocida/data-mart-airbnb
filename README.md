@@ -87,7 +87,7 @@ The definition of tables, their structures, and the constraints adhered to a wel
 
 ![diagram](entity-relationship-diagram.png)
 
-This detailed Entity-Relationship Diagram (ERD) model provides a segment of our database model designed for the Airbnb use case. The squares represent our entities, each popualted with attributes relevant to the respective entities. The arrows between the squares indicate how the entities relate to one another.
+This detailed Entity-Relationship Diagram (ERD) model provides a segment of our database model designed for the Airbnb use case. The squares represent our entities, each populated with attributes relevant to the respective entities. The arrows between the squares indicate how the entities relate to one another.
 
 ![diagram](relationships.png)
 
