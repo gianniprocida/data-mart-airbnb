@@ -5,7 +5,7 @@ Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info.
 
 ## Database creation using docker
 
-Clone the repository on your computer and navigate to the project folder
+If you don't want to create the databse you can skip this part and jump into the sectio [How to Dockerize the MySQL Database?](README.md). Clone the repository on your computer and navigate to the project folder
 
 Run the following command to create a Docker container named "mysql-c1" with MySQL 8.0
 
@@ -81,7 +81,7 @@ link between this directory and the directory within the container.
 
 
 
-# Conception phase 
+## Conception phase 
 The definition of tables, their structures, and the constraints adhered to a well-thought-out process. If you are curious, feel free to explore the details below. 
 
 
@@ -98,6 +98,25 @@ This detailed Entity-Relationship Diagram (ERD) model provides a segment of our 
 -e MYSQL_ROOT_PASSWORD=secret: Sets the environment variable MYSQL_ROOT_PASSWORD inside the container to "secret". This provides the root password for the MySQL server within the container.
 -e MYSQL_DATABASE=todos: Sets the environment variable MYSQL_DATABASE inside the container to "todos". This specifies the name of the initial database to be created by MySQL during container initialization.
 
+
+## How to Dockerize the MySQL Database?
+
+
+The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Below is the YAML file definition for this configuration:
+
+``` 
+services:
+  mysqlc1:
+    image: mysql
+    ports:
+     - "127.0.0.1:3306:3306"
+    volumes: 
+     - ./data_mart_airbnb.sql:/docker-entrypoint-initdb.d/data_mart_airbnb.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: data_mart_airbnb
+   
+```
 
 ### run Alpine Linux: 
 ```
