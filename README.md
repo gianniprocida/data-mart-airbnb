@@ -1,12 +1,11 @@
 # A Use-Case of booking a hotel room:Airbnb
 
-Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info.
+Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info about the database development.
 
 
 ## Database creation using docker
 
-If you don't want to create the databse you can skip this part and jump into the section [How to Dockerize the MySQL Database?](#how-to-dockerize-the-mysql-databaseREADME.md). Clone the repository on your computer and navigate to the project folder
-
+If you don't want to create the databse you can skip this part and jump into the section [How to Dockerize the MySQL Database?](#how-to-dockerize-the-mysql-databaseREADME.md). Clone the repository to your local machine, then navigate to the project folder and to the 'database_creation' folder. 
 Run the following command to create a Docker container named "mysql-c1" with MySQL 8.0
 
 ```
@@ -73,7 +72,7 @@ Execute the script `run_all_scripts.sh` that will do the following things:
 Finally, create a MySQL dump of the database: 
 
 ```
-mysqldump -u root -p data_mart_airbnb > data_mart_airbnb.dump
+mysqldump -u root -p data_mart_airbnb > data_mart_airbnb.sql
 ```
 
 The file will be visible in your current directory because we established a 
