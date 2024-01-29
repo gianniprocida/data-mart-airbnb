@@ -1,0 +1,12 @@
+use data_mart_airbnb;
+delete from Listings;
+delete from Listing_addresses;
+delete from Users;
+delete from User_addresses;
+delete from Amenities;
+delete from Reviews;
+delete from Messages;
+delete from Payments;
+delete from Reservations;
+delete from PaymentsReservations;
+delete from ListingsAmenities;
