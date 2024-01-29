@@ -1,0 +1,11 @@
+services:
+  mysqlc1:
+    image: mysql
+    ports:
+     - "127.0.0.1:3306:3306"
+    volumes: 
+     - ./data_mart_airbnb.sql:/docker-entrypoint-initdb.d/data_mart_airbnb.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: data_mart_airbnb
+   
