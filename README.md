@@ -5,7 +5,7 @@ Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info.
 
 ## Database creation using docker
 
-If you don't want to create the databse you can skip this part and jump into the sectio [How to Dockerize the MySQL Database?](README.md). Clone the repository on your computer and navigate to the project folder
+If you don't want to create the databse you can skip this part and jump into the section [How to Dockerize the MySQL Database?](#how-to-dockerize-the-mysql-databaseREADME.md) </a>. Clone the repository on your computer and navigate to the project folder
 
 Run the following command to create a Docker container named "mysql-c1" with MySQL 8.0
 
