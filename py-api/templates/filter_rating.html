@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter by Rating</title>
+</head>
+<body>
+    <h1>Filter by Rating</h1>
+    <form method="post" action="{{ url_for('filter_by_rating_route') }}">
+        <label for="rating">Rating:</label>
+        <input type="text" id="rating" name="rating">
+        <input type="submit" value="Filter">
+    </form>
+</body>
+</html>

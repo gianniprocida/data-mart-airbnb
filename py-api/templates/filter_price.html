@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Filter</title>
+</head>
+<body>
+    <h1>Price Filter</h1>
+    <form method="POST" action="{{ url_for('filter_by_price_route') }}">
+        <label for="min_price">Minimum Price:</label>
+        <input type="text" id="min_price" name="min_price"><br><br>
+        
+        <label for="max_price">Maximum Price:</label>
+        <input type="text" id="max_price" name="max_price"><br><br>
+        
+        <input type="submit" value="Filter">
+    </form>
+</body>
+</html>

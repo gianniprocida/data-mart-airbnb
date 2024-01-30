@@ -1,0 +1,32 @@
+<!-- filter_results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Results</title>
+</head>
+<body>
+    <h1>Filtered Results</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Street Name</th>
+                <th>House Number</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Zip Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
