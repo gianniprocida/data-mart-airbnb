@@ -95,8 +95,23 @@ This detailed Entity-Relationship Diagram (ERD) model provides a segment of our 
 ## How to Dockerize the MySQL Database?
 
 
-The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Below is the YAML file definition for this configuration:
+The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Below is the YAML file definition 
 
+```
+├── py-api
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── listings_filter.py
+│   ├── requirements.txt
+│   └── templates
+│       ├── filter_location.html
+│       ├── filter_price.html
+│       ├── filter_rating.html
+│       ├── filter_results.html
+│       └── menu.html
+├── relationships.png
+└── we
+```
 
 ```
 services:
@@ -123,4 +138,15 @@ services:
 
 * environment: Sets environment variables for the MySQL container. In this case:
 
+We can reach the database by creating another container in the same network:
 
+```
+docker run -it --network data-mart-airbnb_default \
+--rm nicolaka/netshoot dig data-mart-airbnb-mysqlc1-1
+```
+
+this command will resolve the hostname and get the ip address of the container.
+
+## Integratin Flask api python
+
+Once the database is up and running, connect
