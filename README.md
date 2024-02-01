@@ -89,14 +89,25 @@ The definition of tables, their structures, and the constraints adhered to a wel
 This detailed Entity-Relationship Diagram (ERD) model provides a segment of our database model designed for the Airbnb use case. The squares represent our entities, each populated with attributes relevant to the respective entities. The arrows between the squares indicate how the entities relate to one another.
 
 ![diagram](relationships.png)
-sasda
+
 
 
 ## How to Dockerize the MySQL Database?
 
 
-The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Below is the YAML file definition for this configuration:
+The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Take a look at the current state of our root directory. Remember this folder structure, as it will prove valuable in the subsequent steps
 
+```
+├── database_creation
+    |-- add_foreign_keys
+    |-- add_primary_keys
+    |-- .....
+    |-- ...
+├── db
+    |-- database_datamart-airbnb
+```
+
+Below is the YAML file definition for this configuration:
 
 ```
 services:
@@ -121,6 +132,103 @@ services:
 
 * volumes: Mounts a local file (./db/data_mart_airbnb.sql) into the container at /docker-entrypoint-initdb.d/data_mart_airbnb.sql. This is used to initialize the MySQL database with custom SQL scripts at startup.
 
-* environment: Sets environment variables for the MySQL container. In this case:
+* environment: Sets environment variables for the MySQL container. 
 
 
+To verify the status of the database container, you can check its accessibility by creating another container within the same network using the following command:
+
+```
+docker run -it --network data-mart-airbnb_default \
+--rm nicolaka/netshoot dig data-mart-airbnb-mysqlc1-1
+```
+
+This command resolves the hostname and retrieves the IP address of the specified container. 
+
+If you wish to determine whether the database is also externally exposed, you can execute this script `database_utils.py`. It will return a cursor object that you can use to run your queries.
+
+
+##  Integrating the Flask API
+
+To connect the Flask API to the database, examine the current state of our root directory. Two crucial folders are `py-api` and `db`. The `py-api` folder holds the source code, while the `db` folder is essential as it serves as the source for mounting the `data_mart_airbnb.sql` file into the MySQL container during initialization.
+
+```
+├── py-api
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── listings_filter.py
+│   ├── requirements.txt
+│   └── templates
+│       ├── filter_location.html
+│       ├── filter_price.html
+│       ├── filter_rating.html
+│       ├── filter_results.html
+│       └── menu.html
+├── db
+│   ├── data_mart_airbnb.sql
+
+```
+
+
+Below is the YAML file definition for this configuration:
+
+```
+services:
+  api:
+    build: ./py-api
+    ports:
+     - "127.0.0.1:8080:5000"
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+  mysqlc1:
+    image: mysql
+    ports:
+     - "3306"
+    volumes: 
+     - ./db/data_mart_airbnb.sql:/docker-entrypoint-initdb.d/data_mart_airbnb.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}   
+```
+
+
+For a more secure version, create a file called `.database-cred` in the current working directory and add the environment variables:
+
+```
+MYSQL_HOST=<your_hostname>
+MYSQL_ROOT_PASSWORD=<your_password>
+MYSQL_DATABASE=<your_database>
+MYSQL_USER=<your_user>
+```
+
+## Run the application stack
+Run the following command to reference the environment variables defined in your .database-cred without having to source it explicitly:
+
+```
+docker-compose -f db-api-compose.yaml --env-file .database-cred up -d
+```
+
+You can tear it all down by running the following command:
+
+
+```
+docker-compose -f db-api-compose.yaml down
+```
+
+## Endpoints available
+
+GET /filter/rating: Filters listings based on a minimum rating.
+GET /filter/price: Filters listings based on a price range.
+GET /filter/location: Filters listings based on a location (city).
+POST /create/users: Create a new user.
+
+## Example Usage
+
+You can test your endpoint by using:
+
+```
+curl -v localhost:8080/filter/rating
+curl -v localhost:8080/filter/price
+```
