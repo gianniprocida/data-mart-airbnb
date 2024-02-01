@@ -5,7 +5,7 @@ Refer to the document `Assignments-Portfolio_DLBDSPBDM01-2.pdf` for more info ab
 
 ## Database creation using docker
 
-If you don't want to create the databse you can skip this part and jump into the section [How to Dockerize the MySQL Database?](#how-to-dockerize-the-mysql-databaseREADME.md). Clone the repository to your local machine, then navigate to the project folder and to the 'database_creation' folder. 
+If you don't want to create the databse you can skip this part and jump into the section [How to Dockerize the MySQL Database?](#how-to-dockerize-the-mysql-databaseREADME.md). Clone the repository to your local machine, then navigate to the project folder and to the `database_creation` folder. 
 Run the following command to create a Docker container named "mysql-c1" with MySQL 8.0
 
 ```
@@ -95,7 +95,7 @@ This detailed Entity-Relationship Diagram (ERD) model provides a segment of our 
 ## How to Dockerize the MySQL Database?
 
 
-The approach of Dockerizing the Database, involves utilizing Docker CLI tools. When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Take a look at the current state of our root directory. Remember this folder structure, as it will prove valuable in the subsequent steps
+ When aiming to construct an application stack comprising multiple componentes, it is advisable to leverage Docker Compose. Take a look at the current state of our root directory. Remember this folder structure, as it will prove valuable in the subsequent steps
 
 ```
 ├── database_creation
@@ -144,8 +144,21 @@ docker run -it --network data-mart-airbnb_default \
 
 This command resolves the hostname and retrieves the IP address of the specified container. 
 
-If you wish to determine whether the database is also externally exposed, you can execute this script `database_utils.py`. It will return a cursor object that you can use to run your queries.
+If you wish to determine whether the database is also externally exposed, you could also use the following python function:
 
+
+```
+import mysql.connector
+
+def getConn(host,user,password,db):
+    cnx = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        db=db
+    )
+    return cnx 
+```
 
 ##  Integrating the Flask API
 
@@ -217,16 +230,16 @@ You can tear it all down by running the following command:
 docker-compose -f db-api-compose.yaml down
 ```
 
-## Endpoints available
+### Endpoints available in the Flask Api
 
-GET /filter/rating: Filters listings based on a minimum rating.
-GET /filter/price: Filters listings based on a price range.
-GET /filter/location: Filters listings based on a location (city).
-POST /create/users: Create a new user.
+* GET /filter/rating: Filters listings based on a minimum rating.
+* GET /filter/price: Filters listings based on a price range.
+* GET /filter/location: Filters listings based on a location (city).
+* POST /create/users: Create a new user.
 
-## Example Usage
+### Example Usage
 
-You can test your endpoint by using:
+Test your endpoints using:
 
 ```
 curl -v localhost:8080/filter/rating
