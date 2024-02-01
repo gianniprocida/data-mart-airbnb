@@ -24,7 +24,7 @@ docker run -d \
 * -e MYSQL_DATABASE=todos: Sets the environment variable MYSQL_DATABASE inside the container to "todos". 
 * mysql:8.0: Specifies the Docker image to use for creating the container. In this case, it uses the official MySQL 8.0 image from the Docker Hub.
 
-Once the container is up and running,log into it:
+Once the container is up and running, log into it:
 
 ```
 docker exec -it mysql-c1 sh
