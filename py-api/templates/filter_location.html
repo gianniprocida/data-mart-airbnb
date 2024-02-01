@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Price Filter</title>
+</head>
+
+<body>
+    <h1>Location Filter:</h1>
+    <h2>List of Cities</h2>
+
+    <ul>
+        <li>West Kennethbury</li>
+        <li>Matthewland</li>
+        <li>Michaelbury</li>
+        <li>New Sean</li>
+        <li>South Davidton </li>
+        <li>West Patriciaville</li>
+        <li>Tammyfort</li>
+        <li>Richardburgh</li>
+        <li>Danielshire </li>
+        <li>Kathrynburgh</li>
+    </ul>
+    <form method="POST" action="{{ url_for('filter_by_location_route') }}">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location"><br><br>
+
+        <input type="submit" value="Filter">
+    </form>
+</body>
+
+</html>
