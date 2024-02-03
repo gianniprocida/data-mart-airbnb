@@ -245,3 +245,6 @@ Test your endpoints using:
 curl -v localhost:8080/filter/rating
 curl -v localhost:8080/filter/price
 ```
+
+
+![diagram](architecture.png)
